@@ -1,5 +1,5 @@
-import * as app from './app.js';
+import app from './app.js';
 
 window.addEventListener('load', () => {
-    app.default.init();
+    app.init();
 });

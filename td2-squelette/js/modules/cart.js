@@ -1,7 +1,7 @@
 let tab = [];
 
 function addToCart(product) {
-    let objTrouve = tab.find(e => e.produit == product);
+    let objTrouve = tab.find(e => e.produit === product);
 
     if (objTrouve){
         let idxObj = tab.indexOf(objTrouve);
@@ -19,6 +19,13 @@ function addToCart(product) {
     
 }
 
+function genericCalc(fonct) {
+    return tab.reduce(fonct);
+}
+
+
 export default {
-    addToCart
+    addToCart,
+    tab,
+    genericCalc
 }
