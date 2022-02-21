@@ -45,6 +45,7 @@ let buildProductList = (tab) => {
 }
 
 let displayCart = () => {
+    
     let panierCourant = document.querySelector('table#cart-content');
     let fonctionTransformerChaine = (e) => {
         return `<tr>
@@ -57,26 +58,35 @@ let displayCart = () => {
         return acc += elem;
     }
     console.log(cart.tab);
+    if (cart.tab.length === 0) {
+        console.log("Tabeau vide !");
+        panierCourant.innerHTML = "";
+    }else {
     let str = cart.tab.map(fonctionTransformerChaine).reduce(fonctionAjoutHtml, "");//.reduce(fonctionAjoutHtml, "");
     console.log("Ajout dans le panier !");
     panierCourant.innerHTML = str;
-
-    let fonctionPrixTot = (acc, elem) => {
-        return acc += (elem.produit.price * elem.produit.quantité);
     }
 
-    let prixTotal = cart.genericCalc(fonctionPrixTot, 0);
+    let fonctionPrixTot = (acc, elem) => {
+       
+        return acc += (elem.produit.price * elem.quantité);
+    }
 
+    let prixTotal = cart.genericCalc(fonctionPrixTot);
+    
+    console.log(prixTotal);
     document.querySelector('span#cart-total').innerHTML = prixTotal + "€";
 
-    let fonctionElementTot = (acc, elem) => acc += (elem.produit.quantité);
+    let fonctionElementTot = (acc, elem) => acc += (elem.quantité);
 
 
-    let nbElem = cart.genericCalc(fonctionElementTot, 0);
+    let nbElem = cart.genericCalc(fonctionElementTot); //Mauvais appel pas de second parametre
     console.log(nbElem);
-    document.querySelector('span#total-products').innerHTML = nbElem.quantité;
+    document.querySelector('span#total-products').innerHTML = nbElem;
+    
 }
 
 export default {
-    buildProductList
+    buildProductList,
+    displayCart
 }

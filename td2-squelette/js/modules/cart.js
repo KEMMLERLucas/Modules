@@ -20,12 +20,20 @@ function addToCart(product) {
 }
 
 function genericCalc(fonct) {
-    return tab.reduce(fonct);
+    return tab.reduce(fonct, 0);
+}
+
+function emptyCart() {
+    
+    tab = [];
+   
+    
 }
 
 
 export default {
     addToCart,
     tab,
-    genericCalc
+    genericCalc,
+    emptyCart
 }
