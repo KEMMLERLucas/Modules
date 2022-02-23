@@ -27,13 +27,17 @@ function emptyCart() {
     
     tab = [];
    
+    console.log(tab);
     
 }
 
-
+function getTab() {
+    return tab;
+}
 export default {
     addToCart,
     tab,
     genericCalc,
-    emptyCart
+    emptyCart,
+    getTab
 }

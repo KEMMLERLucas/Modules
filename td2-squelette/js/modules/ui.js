@@ -45,7 +45,8 @@ let buildProductList = (tab) => {
 }
 
 let displayCart = () => {
-    
+    console.log(cart.tab);
+    let tableau = cart.getTab();
     let panierCourant = document.querySelector('table#cart-content');
     let fonctionTransformerChaine = (e) => {
         return `<tr>
@@ -62,7 +63,7 @@ let displayCart = () => {
         console.log("Tabeau vide !");
         panierCourant.innerHTML = "";
     }else {
-    let str = cart.tab.map(fonctionTransformerChaine).reduce(fonctionAjoutHtml, "");//.reduce(fonctionAjoutHtml, "");
+    let str = tableau.map(fonctionTransformerChaine).reduce(fonctionAjoutHtml, "");//.reduce(fonctionAjoutHtml, "");
     console.log("Ajout dans le panier !");
     panierCourant.innerHTML = str;
     }
